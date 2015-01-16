@@ -1,0 +1,34 @@
+#!/bin/sh
+
+while [ 1 ]
+do
+clear
+
+echo "Apache Web Server status check:" 
+
+#grab list of apache proccesses, resolve to a numeric count
+numproc=`pgrep httpd | wc -l`
+
+#if count less than 10 proccesses report LOW
+if [ "$numproc" -lt 10 ]; then
+   echo "[LOW] Web Server OK!"
+else
+	#if count greater than 20 proccesses report HIGH
+	if [ "$numproc" -gt 20 ]; then
+	   echo "[HIGH] Web Server Working hard!"
+	else
+		#if count greater than 100 proccesses report critical and reset apache
+		if [ "$numproc" -gt 100 ]; then
+		   echo "[CRITICAL] Web Server under heavy load, restart required"
+		   echo "apache restart initating..."
+		   `service httpd restart`
+		else
+			#error has occurred manually check apache
+			echo "unexpected variable encountered"
+		fi
+	fi			
+fi
+			#display list of apache proccesses
+			echo "$numproc detected apache processes"
+sleep 30 
+done
