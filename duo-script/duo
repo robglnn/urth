@@ -1,28 +1,25 @@
 #!/bin/sh
 
+#Remove outdated JSON formatted AWS status updates
 rm -f final.json
 
-#turn RSS output into variable data, echo data
+#define latest RSS output for AWS services into variables, remove HTML tags and tabbed space with sed
 ec2data=`wget -q -O- "http://status.aws.amazon.com/rss/ec2-us-east-1.rss" | grep "Service is "| head -n 1 | sed -e 's/<[^>]*>//g' | sed 's/[\t]//g'`
 ec2name="EC2"
-echo $ec2data
-#
+
 rdsdata=`wget -q -O- "http://status.aws.amazon.com/rss/rds-us-east-1.rss" | grep "Service is "| head -n 1 | sed -e 's/<[^>]*>//g' | sed 's/[\t]//g'`
 rdsname="RDS"
-echo $rdsdata
-#
+
 elbdata=`wget -q -O- "http://status.aws.amazon.com/rss/elb-us-east-1.rss" | grep "Service is "| head -n 1 | sed -e 's/<[^>]*>//g' | sed 's/[\t]//g'`
 elbname="ELB"
-echo $elbdata
-#
+
 elasticachedata=`wget -q -O- "http://status.aws.amazon.com/rss/elasticache-us-east-1.rss" | grep "Service is "| head -n 1 | sed -e 's/<[^>]*>//g' | sed 's/[\t]//g'`
 elasticachename="ElastiCache"
-echo $elasticachedata
-#
+
 cloudformationdata=`wget -q -O- "http://status.aws.amazon.com/rss/cloudformation-us-east-1.rss" | grep "Service is "| head -n 1 | sed -e 's/<[^>]*>//g' | sed 's/[\t]//g'`
 cloudformationname="CloudFormation"
-echo $cloudformationdata
 
+# echo the AWS services and status in JSON format to final.json file
 echo -e "[{\"awsname\":\""$ec2name"\", \""awsstat\":\""$ec2data\"},
 {\"awsname\":\""$rdsname"\", \""awsstat\":\""$rdsdata\"},
 {\"awsname\":\""$elbname"\", \""awsstat\":\""$elbdata\"},
