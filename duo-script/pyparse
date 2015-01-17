@@ -3,12 +3,12 @@ import json
 import subprocess
 from pprint import pprint
 
+#initate duo script to output AWS status into JSON
 subprocess.call(['./duo'])
 
 json_data=open('final.json')
 
+#load and display AWS status from final.json
 data = json.load(json_data)
 pprint(data)
-#data["awsname"]["awsstat"]
 json_data.close()
-
