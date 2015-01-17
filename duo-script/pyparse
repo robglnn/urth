@@ -1,0 +1,14 @@
+#!/usr/bin/python
+import json
+import subprocess
+from pprint import pprint
+
+subprocess.call(['./duo'])
+
+json_data=open('final.json')
+
+data = json.load(json_data)
+pprint(data)
+#data["awsname"]["awsstat"]
+json_data.close()
+
