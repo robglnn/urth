@@ -1,7 +1,10 @@
 #!/bin/sh
 
-#Remove outdated JSON formatted AWS status updates
+#remove outdated JSON formatted AWS status updates
 rm -f final.json
+
+#make AWS results viewable by browser
+cp -f  awscheck.html /var/www/html/.
 
 #define latest RSS output for AWS services into variables, remove HTML tags and tabbed space with sed
 ec2data=`wget -q -O- "http://status.aws.amazon.com/rss/ec2-us-east-1.rss" | grep "Service is "| head -n 1 | sed -e 's/<[^>]*>//g' | sed 's/[\t]//g'`
