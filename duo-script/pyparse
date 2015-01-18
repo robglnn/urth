@@ -1,14 +1,11 @@
 #!/usr/bin/python
 import json
 import subprocess
-from pprint import pprint
+#from pprint import pprint
+import webbrowser
 
 #initate duo script to output AWS status into JSON
 subprocess.call(['./duo'])
 
-json_data=open('final.json')
-
-#load and display AWS status from final.json
-data = json.load(json_data)
-pprint(data)
-json_data.close()
+# Display AWS services and status inside new browser window
+webbrowser.open_new('http://ec2-54-67-74-97.us-west-1.compute.amazonaws.com/awscheck.html')
