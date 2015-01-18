@@ -7,7 +7,7 @@ Scripts to monitor AWS services
 
 Installation
 ------------
-Download the duo-script directory to the desired location
+Download the duo-script directory to /usr/local/bin/urth/
 
 Description
 -----------
@@ -22,4 +22,4 @@ Data on these services and their current status is then output to a JSON format 
 
 Usage
 -----
-If you've added the scripts to /usr/bin they can be run from any directory. Otherwise simply use ./pyparse where it was downloaded. This will grab the latest status of each AWS service via an RSS feed, output the results in a JSON format, then parsed out for viewing by browser
+Simply use ./pyparse where it was downloaded. This will grab the latest status of each AWS service via an RSS feed, output the results in a JSON format, then parsed out for viewing by browser
