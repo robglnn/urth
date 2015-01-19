@@ -1,7 +1,11 @@
 #!/bin/sh
 
+while [ 1 ]
+do
+clear
+
 #remove outdated JSON formatted AWS status updates
-rm -f final.json
+rm -f /var/www/html/final.json
 
 #make AWS results viewable by browser
 cp -f  awscheck.html /var/www/html/.
@@ -27,4 +31,7 @@ echo -e "[{\"awsname\":\""$ec2name"\", \""awsstat\":\""$ec2data\"},
 {\"awsname\":\""$rdsname"\", \""awsstat\":\""$rdsdata\"},
 {\"awsname\":\""$elbname"\", \""awsstat\":\""$elbdata\"},
 {\"awsname\":\""$elasticachename"\", \""awsstat\":\""$elasticachedata\"},
-{\"awsname\":\""$cloudformationname"\", \""awsstat\":\""$cloudformationdata\"}]" >> final.json
+{\"awsname\":\""$cloudformationname"\", \""awsstat\":\""$cloudformationdata\"}]" >> /var/www/html/final.json
+
+sleep 30
+done

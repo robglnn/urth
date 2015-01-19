@@ -1,0 +1,41 @@
+<html>
+<title>AWS Status</title>
+<head><META HTTP-EQUIV="refresh" CONTENT="5; URL=http://54.67.74.97/awscheck.html"></head>
+<body>
+<h3>AWS Services Status Check</h3>
+
+<!--Display the current time-->
+Last updated:
+<script language="javascript">
+var time = new Date();
+document.write(time);
+</script><br><br>
+
+<!--Display AWS status results from final.json -->
+<div id="statcheck"></div>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var awsname = "final.json";
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+        myFunction(myArr);
+    }
+}
+xmlhttp.open("GET", awsname, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += arr[i].awsname +
+        arr[i].awsstat + '<br>';
+    }
+    document.getElementById("statcheck").innerHTML = out;
+}
+</script>
+</body>
+</html>
