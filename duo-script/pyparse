@@ -8,4 +8,4 @@ import webbrowser
 subprocess.call(['./duo'])
 
 # Display AWS services and status inside new browser window
-webbrowser.open_new('http://ec2-54-67-74-97.us-west-1.compute.amazonaws.com/awscheck.html')
+webbrowser.open_new('http://127.0.0.1/awscheck.html')
