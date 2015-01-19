@@ -1,9 +1,5 @@
 #!/bin/sh
 
-while [ 1 ]
-do
-clear
-
 #remove outdated JSON formatted AWS status updates
 rm -f /var/www/html/final.json
 
@@ -32,6 +28,3 @@ echo -e "[{\"awsname\":\""$ec2name"\", \""awsstat\":\""$ec2data\"},
 {\"awsname\":\""$elbname"\", \""awsstat\":\""$elbdata\"},
 {\"awsname\":\""$elasticachename"\", \""awsstat\":\""$elasticachedata\"},
 {\"awsname\":\""$cloudformationname"\", \""awsstat\":\""$cloudformationdata\"}]" >> /var/www/html/final.json
-
-sleep 30
-done

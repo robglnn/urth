@@ -22,4 +22,4 @@ Data on these services and their current status is then output to a JSON format 
 
 Usage
 -----
-Simply use ./pyparse where it was downloaded. This will grab the latest status of each AWS service via an RSS feed, output the results in a JSON format, then parsed out for viewing by browser
+Simply use ./pyparse where it was downloaded. This will grab the latest status of each AWS service via an RSS feed, output the results in a JSON format, then parsed out for viewing by browser. When the script is running pull up http://server-IP-here/awscheck.html
